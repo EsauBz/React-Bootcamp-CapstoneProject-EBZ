@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import FeatureProduct from './FeatureProduct.js'
+import { Link } from 'react-router-dom';
 
 const StyledCategories = styled.div`
-  margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   @media (max-width: 800px) {
@@ -11,12 +11,24 @@ const StyledCategories = styled.div`
   @media (max-width: 540px) {
     grid-template-columns: repeat(1, 1fr);
   }
-  margin-bottom: 2%;
-  margin-top: 2%;
 `;
 
 const TypeTitle = styled.h3`
   font-size: 4vh;
+`;
+
+const AllProducts = styled.button`
+background-color: #823329;
+color: white;
+padding: 5px 15px;
+border-radius: 5px;
+text-transform: uppercase;
+margin: 10px;
+cursor: pointer;
+transition: ease background-color 250ms;
+&:hover {
+  background-color: #ba181b;
+}
 `;
 
 function FeaturedProducts ({ featuredProducts }){
@@ -28,6 +40,7 @@ function FeaturedProducts ({ featuredProducts }){
             <FeatureProduct key={product.id} product={product}/>
           ))}
         </StyledCategories>
+        <Link to="/products"><AllProducts > View All Products </AllProducts></Link>
       </div>
     );
   };

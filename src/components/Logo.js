@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import logoStore from './images/logoF.png';
+import { Link } from 'react-router-dom';
 
  const StyledImg = styled.img`
-    float: ${props => props.side};
+    width: 120px;
   `;
 
-  function Logo (props) {
+  function Logo () {
     return (
-        <>
-         <StyledImg src={props.source} alt ={props.alt} 
-         height={props.haut} width={props.long} 
-         margin={props.margin} side={props.side}/>
-        </>
+        <Link to="/">
+         <StyledImg src={logoStore} alt="Store Logo" />
+        </Link>
        );
   }
 
