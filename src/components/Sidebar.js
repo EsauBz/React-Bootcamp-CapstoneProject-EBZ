@@ -1,41 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
+import StyledFilterCategory from './StyledFilterCategory.js';
 
 const StyledDiv = styled.div`
-    width: 190px;
-    background-color: #AAAAAA;
-    color: black;
-    font-family: Garamond, serif;
-    text-decoration: none;
+  background-color: #e0dfd5;
+  color: black;
+  font-family: Garamond, serif;
+  text-decoration: none;
+  height: auto;
+  padding: 1%;
+  width: 100%;
 `;
 
-const StyledLink = styled.a`
-    font-family: Garamond, serif;
-    color: black;
-    padding-left: 5%;
-    text-decoration: none;
-    font-size: 18px;
+const Title = styled.h4`
+  font-family: Garamond, serif;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
 `;
 
-const Section = styled.div`
-    display: flex;
-    justify-contant: flex-end;
-    border: 2px white;
-    border-bottom-style: solid;
-`;
-
-function Sidebar({categories}) {
+function Sidebar({ categories, filterByCategory, activeFilters }) {
   return (
     <StyledDiv>
-        <h4>Categories</h4>
-        {categories?.results.map(catego => (
-            <Section key={catego.id}>
-                <StyledLink > * {catego.data.name}</StyledLink>
-            </Section>
-          )
-          )}
+      <Title>Filter by: </Title>
+      {categories?.results.map((catego) => (
+        <StyledFilterCategory
+          key={catego.id}
+          active={activeFilters.includes(catego.id)}
+          handleClick={filterByCategory}
+          category={catego}
+        />
+      ))}
     </StyledDiv>
   );
 }
 
-export default Sidebar
+export default Sidebar;

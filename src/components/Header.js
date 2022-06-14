@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledDiv = styled.div`
-    background-color: #E0DFD5;
+  background-color: #e0dfd5;
 `;
 
 const HeaderLink = styled(Link)`
@@ -20,16 +20,15 @@ const HeaderLink = styled(Link)`
 function Header() {
   return (
     <StyledDiv>
-        <Logo />
+      <Logo />
 
-        <HeaderLink to="/">Home</HeaderLink>
-        <HeaderLink to="/products">Products</HeaderLink>
-        
-          <InputSearch />
-          <CartLogo  />
-        
+      <HeaderLink to="/">Home</HeaderLink>
+      <HeaderLink to="/products">Products</HeaderLink>
+
+      <InputSearch />
+      <CartLogo />
     </StyledDiv>
-  )
+  );
 }
 
-export default Header
+export default Header;

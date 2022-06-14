@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import FeatureProduct from './FeatureProduct';
+
 const StyledCategories = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
