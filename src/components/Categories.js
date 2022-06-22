@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import ProductType from './ProductType.js';
 
 const StyledCategories = styled.div`
-  margin: auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   @media (max-width: 540px) {

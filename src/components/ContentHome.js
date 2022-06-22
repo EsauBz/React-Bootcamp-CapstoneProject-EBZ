@@ -9,8 +9,6 @@ import styled from 'styled-components';
 
 const StyledDiv = styled.div`
     background-color: #f5cb5c;
-    height: auto;
-    width: 100%;
 `;
 
 function ContentHome() {
