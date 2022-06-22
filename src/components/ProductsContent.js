@@ -15,11 +15,11 @@ const StyledDiv = styled.div`
 function ProductsContent() {
   const [activeFilters, setActiveFilters] = useState([]);
   const [activeProducts, setActiveProducts] = useState(products);
-  const [load, setLoad] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setLoad(false);
+      setIsLoading(false);
     }, 2000);
   }, []);
 
@@ -50,7 +50,7 @@ function ProductsContent() {
 
   return (
     <StyledDiv>
-      {load ? (
+      {isLoading ? (
         <LoadingSpin animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </LoadingSpin>

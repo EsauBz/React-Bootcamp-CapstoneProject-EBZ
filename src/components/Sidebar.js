@@ -16,7 +16,7 @@ const Title = styled.h4`
   font-family: Garamond, serif;
   color: black;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.3rem;
 `;
 
 function Sidebar({ categories, filterByCategory, activeFilters }) {
