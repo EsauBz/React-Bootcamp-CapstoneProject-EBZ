@@ -44,7 +44,7 @@ export function useSearch(param) {
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading]);
+  }, [apiRef, isApiMetadataLoading, param]);
 
   return products;
 }
