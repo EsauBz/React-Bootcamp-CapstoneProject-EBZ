@@ -12,6 +12,26 @@ const StyledDiv = styled.div`
   width: 100%;
 `;
 
+const ClearFilters = styled.div`
+  font-family: Garamond, serif;
+  display: inline;
+  border-radius: 12px;
+  background-color: ${({ active, clear }) =>
+    active ? '#e5383b' : clear ? '#fec89a' : '#fec89a'};
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  border: 2px white;
+  border-style: solid;
+  padding: 4px;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: ease background-color 250ms;
+  &:hover {
+    background-color: #f5f3f4;
+  }
+`;
+
 const Title = styled.h4`
   font-family: Garamond, serif;
   color: black;
@@ -19,7 +39,12 @@ const Title = styled.h4`
   font-size: 1.3rem;
 `;
 
-function Sidebar({ categories, filterByCategory, activeFilters }) {
+function Sidebar({
+  categories,
+  filterByCategory,
+  activeFilters,
+  handleClearFiltersClick,
+}) {
   return (
     <StyledDiv>
       <Title>Filter by: </Title>
@@ -31,6 +56,14 @@ function Sidebar({ categories, filterByCategory, activeFilters }) {
           category={catego}
         />
       ))}
+
+      <ClearFilters
+        id="clearFilters"
+        key="clearFilters"
+        clear={true}
+        onClick={handleClearFiltersClick}>
+        Clear filters
+      </ClearFilters>
     </StyledDiv>
   );
 }
