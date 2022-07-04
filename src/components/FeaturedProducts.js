@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import FeatureProduct from './FeatureProduct.js';
+import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
 
 const StyledCategories = styled.div`
@@ -38,8 +39,12 @@ const scrollToTop = () => {
   });
 };
 
-function FeaturedProducts({ featuredProducts }) {
-  return (
+function FeaturedProducts({ featuredProducts, isLoading }) {
+  return isLoading ? (
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+  ) : (
     <div>
       <TypeTitle> Featured Products </TypeTitle>
       <StyledCategories>

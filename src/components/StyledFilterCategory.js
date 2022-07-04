@@ -16,7 +16,6 @@ const StyledLink = styled.a`
   &:hover {
     background-color: #f5f3f4;
   }
-}
 `;
 
 function StyledFilterCategory({ handleClick, category, active }) {

@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import plusCart from './images/plusCart.png';
+import details from './images/details.png';
+import { Link } from 'react-router-dom';
 
 const ProductDiv = styled.div`
   font-size: 1.1em;
@@ -6,14 +9,31 @@ const ProductDiv = styled.div`
   margin-bottom: 7%;
   margin-right: 2%;
   margin-left: 2%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: auto;
 `;
 
 const ProductImg = styled.img`
     max-width: 100%;
 }`;
 
+const DetailsImg = styled.img`
+    height: 2rem;
+    cursor: pointer;
+}`;
+
 const InfoDiv = styled.div`
   background-color: white;
+`;
+
+const DetailsDiv = styled.div`
+  padding-right: 5%;
+`;
+
+const InfoProduct = styled.div`
+  background-color: white;
+  display: inline-flex;
 `;
 
 const ProductName = styled.p`
@@ -26,7 +46,6 @@ font-family: Garamond, serif;
 
 const CategoryInfo = styled.span`
 font-family: Garamond, serif;
-  padding: 10px 20px;
   @media (max-width: 540px) {
     font-size: 4.5vw;
     }
@@ -36,9 +55,7 @@ font-family: Garamond, serif;
 const Price = styled.span`
 font-family: Garamond, serif;
   @media (max-width: 540px) {
-  font-size: 4.5vw;
-  padding: 5px 10px;
-  margin: 0;
+  font-size: 4.8vw;
   }
 }`;
 
@@ -52,10 +69,24 @@ function FeatureProduct({ product }) {
         />
         <InfoDiv>
           <ProductName>
-            <strong> {product.data.name} </strong>{' '}
+            <strong> {product.data.name} </strong>
           </ProductName>
-          <CategoryInfo>{product.data.category.slug}</CategoryInfo>
-          <Price>$ {product.data.price}</Price>
+          <InfoProduct>
+            <DetailsDiv>
+              <CategoryInfo>{product.data.category.slug}</CategoryInfo>
+            </DetailsDiv>
+            <DetailsDiv>
+              <Price> ${product.data.price}</Price>
+            </DetailsDiv>
+            <DetailsDiv>
+              <DetailsImg src={plusCart} alt="add to cart img" />
+            </DetailsDiv>
+            <DetailsDiv>
+              <Link to={`/product/${product.id}`}>
+                <DetailsImg src={details} alt="go to product details" />{' '}
+              </Link>
+            </DetailsDiv>
+          </InfoProduct>
         </InfoDiv>
       </ProductDiv>
     )

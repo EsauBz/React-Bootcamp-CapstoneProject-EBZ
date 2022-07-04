@@ -1,6 +1,6 @@
-import React from 'react';
 import Logo from './Logo.js';
 import CartLogo from './CartLogo.js';
+
 import InputSearch from './InputSearch.js';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -26,6 +26,7 @@ function Header() {
       <HeaderLink to="/products">Products</HeaderLink>
 
       <InputSearch />
+
       <CartLogo />
     </StyledDiv>
   );

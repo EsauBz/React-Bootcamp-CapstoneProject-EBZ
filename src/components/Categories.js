@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ProductType from './ProductType.js';
+import Spinner from 'react-bootstrap/Spinner';
 
 const StyledCategories = styled.div`
   display: grid;
@@ -14,17 +15,21 @@ const TypeTitle = styled.h3`
   font-size: 4vh;
 `;
 
-function Categories ({ productCategories }){
-    return (
-      <div>
-        <TypeTitle> Chose a Type of Product </TypeTitle>
-        <StyledCategories>
-          {productCategories?.results.map(category => (
-            <ProductType key={category.id} category={category}/>
-          ))}
-        </StyledCategories>
-      </div>
-    );
-  };
+function Categories({ productCategories, isLoading }) {
+  return isLoading ? (
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+  ) : (
+    <div>
+      <TypeTitle> Chose a Type of Product </TypeTitle>
+      <StyledCategories>
+        {productCategories?.results.map((category) => (
+          <ProductType key={category.id} category={category} />
+        ))}
+      </StyledCategories>
+    </div>
+  );
+}
 
 export default Categories;
