@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import plusCart from './images/plusCart.png';
 import details from './images/details.png';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const ProductDiv = styled.div`
   font-size: 1.1em;
@@ -60,6 +61,35 @@ font-family: Garamond, serif;
 }`;
 
 function FeatureProduct({ product }) {
+  const { state, dispatch } = useCart();
+
+  const checkQtyVsStock = (id, qty, stock) => {
+    const itemInCart = state.items.find((i) => i.id === id);
+    if (!itemInCart && qty <= stock) {
+      return true;
+    }
+    if (itemInCart && itemInCart.qty + qty <= stock) {
+      return true;
+    }
+    return false;
+  };
+
+  const ChangeCart = () => {
+    checkQtyVsStock(product.id, 1, product.data.stock)
+      ? dispatch({
+          type: 'addItem',
+          payload: {
+            id: product.id,
+            name: product.data.name,
+            price: product.data.price,
+            qty: 1,
+            mainImage: product.data.mainimage,
+            stock: product.data.stock,
+          },
+        })
+      : alert('Not enough stock');
+  };
+
   return (
     product.data && (
       <ProductDiv>
@@ -75,12 +105,20 @@ function FeatureProduct({ product }) {
             <DetailsDiv>
               <CategoryInfo>{product.data.category.slug}</CategoryInfo>
             </DetailsDiv>
+
             <DetailsDiv>
               <Price> ${product.data.price}</Price>
             </DetailsDiv>
-            <DetailsDiv>
-              <DetailsImg src={plusCart} alt="add to cart img" />
-            </DetailsDiv>
+
+            {product.data.stock && (
+              <DetailsDiv>
+                <DetailsImg
+                  onClick={ChangeCart}
+                  src={plusCart}
+                  alt="add to cart img"
+                />
+              </DetailsDiv>
+            )}
             <DetailsDiv>
               <Link to={`/product/${product.id}`}>
                 <DetailsImg src={details} alt="go to product details" />{' '}

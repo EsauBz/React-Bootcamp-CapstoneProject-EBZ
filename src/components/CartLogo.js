@@ -12,6 +12,7 @@ function CartLogo() {
   return (
     <>
       <StyledLogo
+        id="cart"
         src={'https://img.icons8.com/stickers/100/undefined/shopping-cart.png'}
         alt="Cart Logo"
       />
