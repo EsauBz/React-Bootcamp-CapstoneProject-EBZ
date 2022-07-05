@@ -1,5 +1,5 @@
 import Spinner from 'react-bootstrap/Spinner';
-import ProductInfo from '../components/ProductInfo.js'
+import ProductInfo from '../components/ProductInfo.jsx'
 import { useParams } from 'react-router-dom';
 import { useProductDetails } from '../utils/hooks/useProductDetails.js';
 

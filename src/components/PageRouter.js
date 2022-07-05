@@ -5,6 +5,7 @@ import Products from '../pages/Products';
 import NoPage from '../pages/NoPage';
 import ProductDetails from '../pages/ProductDetails';
 import SearchProducts from '../pages/SearchProducts';
+import ShoppingCart from '../pages/ShoppingCart';
 
 function PageRouter() {
   return (
@@ -12,10 +13,10 @@ function PageRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/products" element={<Products />} />
-      <Route path="/products" element={<Products />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/product/:productId" element={<ProductDetails />} />
       <Route path="/search" element={<SearchProducts />} />
+      <Route path="/cart" element={<ShoppingCart />} />
       <Route path="*" element={<NoPage />} />
     </Routes>
   );

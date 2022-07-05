@@ -23,6 +23,7 @@ function ProductsContent() {
   const [isLoading, setIsLoading] = useState(true);
 
   const currentyCategoryId = searchParams.get('category') ?? '';
+
   const [currentPage, setCurrentPage] = useState(parseInt(products?.page) || 1);
   const [totalPages, setTotalPages] = useState(
     parseInt(products?.total_pages) || 1
